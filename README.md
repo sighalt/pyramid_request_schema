@@ -1,6 +1,6 @@
 # pyramid_request_schema
 
-Validation incoming requests is a must-have for modern rest-like APIs.
+Validation of incoming requests is a must-have for modern rest-like APIs.
 
 ## What this package will do for you
 
@@ -45,7 +45,7 @@ Each of both includes does nothing but registering the view deriver
 
 ## Usage
 
-The usage is of `pyramid_request_schema` is dead simple. Define a proper
+The usage of `pyramid_request_schema` is dead simple. Define a proper
 colander schema representing your expected input:
 
 ```python
@@ -72,8 +72,8 @@ def my_view(request):
 ```
 
 You can then access the validated data via the `validated` attribute on the
-request object. An example structure for the above defined schema might be as
-follows:
+request object. The resulting structure for the above defined schema and the
+following curl request will look like:
 
 ```python
 request.validated = {
@@ -87,3 +87,8 @@ request.validated = {
 }
 ```
 
+```bash
+$ curl -H "content-type: application/json" \
+    --data='{"str_val": "Some arbitrary string", "float_val": "12.34"}' \
+    http://example.com/?page=1
+```
